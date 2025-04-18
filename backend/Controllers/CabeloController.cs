@@ -44,5 +44,16 @@ namespace backend.Controllers
             var cabelo = await _cabeloInterface.CriarCabelo(cabeloCraicaoDto);
             return Ok(cabelo);
         }
+        [HttpDelete("DeletarCabelo")]
+        public async Task<ActionResult<ResponseModel<List<CabeloModel>>>> DeletarCabelo(int idCabelo){
+            var cabelo=await _cabeloInterface.ExcluirCabelo(idCabelo);
+            return Ok(cabelo);
+        }
+
+        [HttpPut("AtualizarCabelo")]
+        public async Task<ActionResult<ResponseModel<List<CabeloModel>>>> EditarCabelo(CabeloEdicaoDto cabeloEdicaoDto){
+            var cabelo = await _cabeloInterface.EditarCabelo(cabeloEdicaoDto);
+            return Ok(cabelo);
+        }
     }
 }

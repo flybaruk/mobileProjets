@@ -44,8 +44,9 @@ namespace backend.services.Cabelo
             try
             {
                 var cabelo = await _context.Cabelos.FirstOrDefaultAsync(cabeloBanco=>cabeloBanco.Id==idCabelo);
-                if(cabelo!=null){
+                if(cabelo==null){
                     resposta.Mensagem="Nenhum registro encontrado";
+                    resposta.Dados=cabelo;
                     return resposta;
                 }
                 resposta.Dados=cabelo;
