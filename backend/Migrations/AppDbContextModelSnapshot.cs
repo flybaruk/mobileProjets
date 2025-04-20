@@ -16,6 +16,7 @@ namespace backend.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("tembo")
                 .HasAnnotation("ProductVersion", "8.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
@@ -43,7 +44,7 @@ namespace backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cabelos");
+                    b.ToTable("Cabelos", "tembo");
                 });
 
             modelBuilder.Entity("backend.models.CabeloTratamentoModel", b =>
@@ -66,7 +67,7 @@ namespace backend.Migrations
 
                     b.HasIndex("TratamentoId");
 
-                    b.ToTable("CabeloTratamento");
+                    b.ToTable("CabeloTratamento", "tembo");
                 });
 
             modelBuilder.Entity("backend.models.TratamentoModel", b =>
@@ -89,13 +90,17 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Produtos")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tratamentos");
+                    b.ToTable("Tratamentos", "tembo");
                 });
 
             modelBuilder.Entity("backend.models.CabeloTratamentoModel", b =>

@@ -9,6 +9,7 @@ namespace backend.models
     public class TratamentoModel
     {
         public int Id{ get; set; }
+        public string Nome{ get; set; }
         public string Beneficios{ get; set; }
         public string Produtos{ get; set; }
         public string Funcao{ get; set; }

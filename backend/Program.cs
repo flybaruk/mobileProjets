@@ -1,5 +1,6 @@
 using backend.data;
 using backend.services.Cabelo;
+using backend.services.CabeloTratamento;
 using backend.services.Tratamento;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<CabeloInterface, CabeloService>();
 builder.Services.AddScoped<TratamentoInterface, TratamentoService>();
+builder.Services.AddScoped<CabeloTratamentoInterface, CabeloTratamentoService>();
 
 builder.Services.AddDbContext<AppDbContext>(options=>{
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));

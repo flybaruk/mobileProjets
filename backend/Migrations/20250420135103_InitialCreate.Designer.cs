@@ -11,14 +11,15 @@ using backend.data;
 namespace backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250412002703_CriandoBancoDeDados")]
-    partial class CriandoBancoDeDados
+    [Migration("20250420135103_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("tembo")
                 .HasAnnotation("ProductVersion", "8.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
@@ -46,7 +47,7 @@ namespace backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cabelos");
+                    b.ToTable("Cabelos", "tembo");
                 });
 
             modelBuilder.Entity("backend.models.CabeloTratamentoModel", b =>
@@ -69,7 +70,7 @@ namespace backend.Migrations
 
                     b.HasIndex("TratamentoId");
 
-                    b.ToTable("CabeloTratamento");
+                    b.ToTable("CabeloTratamento", "tembo");
                 });
 
             modelBuilder.Entity("backend.models.TratamentoModel", b =>
@@ -92,13 +93,17 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Produtos")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tratamentos");
+                    b.ToTable("Tratamentos", "tembo");
                 });
 
             modelBuilder.Entity("backend.models.CabeloTratamentoModel", b =>
