@@ -11,7 +11,7 @@ using backend.data;
 namespace backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250420135103_InitialCreate")]
+    [Migration("20250423212854_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -71,6 +71,27 @@ namespace backend.Migrations
                     b.HasIndex("TratamentoId");
 
                     b.ToTable("CabeloTratamento", "tembo");
+                });
+
+            modelBuilder.Entity("backend.models.LoginModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("login")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Login", "tembo");
                 });
 
             modelBuilder.Entity("backend.models.TratamentoModel", b =>

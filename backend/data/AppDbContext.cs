@@ -16,6 +16,7 @@ namespace backend.data
         public DbSet<CabeloModel> Cabelos { get; set;}
         public DbSet<TratamentoModel> Tratamentos { get; set;}
         public DbSet<CabeloTratamentoModel> CabeloTratamento{ get; set;}
+        public DbSet<LoginModel> Login { get; set;}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

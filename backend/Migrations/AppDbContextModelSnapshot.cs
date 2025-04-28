@@ -70,6 +70,27 @@ namespace backend.Migrations
                     b.ToTable("CabeloTratamento", "tembo");
                 });
 
+            modelBuilder.Entity("backend.models.LoginModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("login")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Login", "tembo");
+                });
+
             modelBuilder.Entity("backend.models.TratamentoModel", b =>
                 {
                     b.Property<int>("Id")

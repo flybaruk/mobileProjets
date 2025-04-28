@@ -31,6 +31,21 @@ namespace backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Login",
+                schema: "tembo",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    login = table.Column<string>(type: "text", nullable: false),
+                    password = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Login", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Tratamentos",
                 schema: "tembo",
                 columns: table => new
@@ -95,6 +110,10 @@ namespace backend.Migrations
         {
             migrationBuilder.DropTable(
                 name: "CabeloTratamento",
+                schema: "tembo");
+
+            migrationBuilder.DropTable(
+                name: "Login",
                 schema: "tembo");
 
             migrationBuilder.DropTable(
